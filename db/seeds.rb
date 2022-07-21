@@ -14,9 +14,9 @@ dishoom = {name: "Dishoom", address: "7 Boundary St, London E2 7JE", category: "
 pizza_east =  {name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", category: "italian"}
 fat_hippo = {name: "Fat Hippo", address: "High street, Newcastle", category: "chinese"}
 wagamamas = {name: "wags", address: "Tower of London", category: "japanese"}
-won_key = {name: "wan key", address: "china town", category: "chinese"}
+won_kee = {name: "wan kee", address: "china town", category: "chinese"}
 
-[dishoom, pizza_east, fat_hippo, wagamamas, won_key].each do |attributes|
+[dishoom, pizza_east, fat_hippo, wagamamas, won_kee].each do |attributes|
   restaurant = Restaurant.create!(attributes)
   puts "Created #{restaurant.name}"
 end

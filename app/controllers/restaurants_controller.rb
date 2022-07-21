@@ -1,10 +1,11 @@
-class RestaurantController < ApplicationController
+class RestaurantsController < ApplicationController
   def index
-    @restaurant = Restaurant.all
+    @restaurants = Restaurant.all
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reviews = Review.all
   end
 
   def new
@@ -13,8 +14,11 @@ class RestaurantController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurants_path
+    if @restaurant.save
+      redirect_to restaurants_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

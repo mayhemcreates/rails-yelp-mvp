@@ -1,21 +1,31 @@
+
+
 <div class="container">
+<div class="row">
+<%= link_to "<< return to full listings", restaurants_path%>
+</div>
   <div class="row">
     <h1><%=@restaurant.name%></h1>
     <p><%= @restaurant.address %></p>
     <p><%= @restaurant.phone_number%></p>
     <h2><%= @restaurant.category%></h2>
   </div>
-  <div class="row">
-    <%=link_to "add a review", new_restaurant_review_path(@restaurant)%>
-  </div>
   <hr>
   <div class="row">
     <h2> Read Reviews</h2>
     <ul>
-      <% @reviews.each do |review|%>
-      <liexi><%=review.content%>
+      <% @restaurant.reviews.each do |review|%>
+      <li><%=review.content%>
           <%= review.rating %></li>
       <% end %>
     </ul>
+  </div>
+  <div class="row">
+    <h2>New review</h2>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
